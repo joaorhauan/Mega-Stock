@@ -1,8 +1,8 @@
 import os
 from flask import Flask
-from app.models import Produto, MovimentacaoEstoque, Fornecedor, Categoria
 from flask_migrate import Migrate
 from config import db
+from .routes.produto import bp_produto
 
 
 def create_app():
@@ -26,6 +26,12 @@ def create_app():
     migrate.init_app(app, db)
 
     with app.app_context():
-        from . import models
+        from app.models.Produto import Produto
+        from app.models.MovimentacaoEstoque import MovEstoque
+        from app.models.Categoria import Categoria
+        from app.models.Fornecedor import Fornecedor
+        db.create_all()
+
+    app.register_blueprint(bp_produto, url_prefix="/produtos")
 
     return app
