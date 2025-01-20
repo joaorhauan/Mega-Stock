@@ -1,56 +1,59 @@
-<!DOCTYPE html>
-<head>
-    <meta charset='UTF-8'/>
-    <title>Criar produto</title>
-</head>
-<body>
-    <h1> Criar novo produto</h1>
+{%extends "base.html"%}
 
-    <form action="{{ url_for('produto.create') }}" method="post"> 
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome"/>
+{%block title%}
+    Criar produto
+{%endblock%}
 
-        <br/><br/>
+{%block conteudo%}
+    <form action="{{ url_for('produto.create') }}" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control border border-secondary" id="nome" name="nome" required/>
+        </div>
 
-        <label for="descricao">Descrição:</label> <br>
-        <textarea name="descricao" rows="4" cols="50"></textarea>
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição:</label>
+            <textarea class="form-control border border-secondary" id="descricao" name="descricao" rows="4" required></textarea>
+        </div>
 
-        <br/><br/>
+        <div class="mb-3">
+            <label for="preco" class="form-label">Preço:</label>
+            <input type="number" class="form-control border border-secondary" id="preco" name="preco" step="0.01" required/>
+        </div>
 
-        <label for="preco">Preço:</label>
-        <input type="number" step="0.01" name="preco"/>
+        <div class="mb-3">
+            <label for="quantidade_estoque" class="form-label">Quantidade no estoque:</label>
+            <div class="d-flex gap-2 align-items-center">
+                <input type="range" class="form-range" id="amountRange" min="0" max="200" value="0" oninput="this.form.amountInput.value=this.value"/>
+                <input type="number" class="form-control border border-secondary" style="width: 100px" id="amountInput" name="quantidade_estoque" min="0" max="200" value="0" oninput="this.form.amountRange.value=this.value"/>
+            </div>
+        </div>
 
-        <br/><br/>
+        <div class="mb-3">
+            <label for="categoria" class="form-label">Categoria:</label>
+            <select class="form-select border border-secondary" id="categoria" name="categoria" required>
+                <option value="eletrônicos">eletroniko 1</option>
+                <option>categoria 2</option>
+                <option>categoria 3</option>
+            </select>
+            <div class="mt-2">
+                <a href="#" class="btn btn-outline-primary btn-sm">Adicionar nova categoria</a>
+            </div>
+        </div>
 
-        <label for="quantidade_estoque">Quantidade no estoque:</label>
-        <input type="range" id="amountRange" min="0" max="200" value="0" oninput="this.form.amountInput.value=this.value"/>
-        <input type="number" id="amountInput" name="quantidade_estoque" min="0" max="200" value="0" oninput="this.form.amountRange.value=this.value">
-        
+        <div class="mb-3">
+            <label for="fornecedor" class="form-label">Fornecedor:</label>
+            <select class="form-select border border-secondary" id="fornecedor" name="fornecedor" required>
+                <option value="bokus">bokus 1</option>
+                <option>fornecedor 2</option>
+                <option>fornecedor 3</option>
+            </select>
+            <div class="mt-2">
+                <a href="#" class="btn btn-outline-primary btn-sm">Adicionar novo fornecedor</a>
+            </div>
+        </div>
 
-        <br/><br/>
-
-        <label for="categoria">Categoria:</label>
-        <select name="categoria">
-            <option value="eletrônicos">eletroniko 1</option> // definir apos criar categorias
-            <option>categoria 2</option>
-            <option>categoria 3</option>
-        </select>
-
-        <br/><br/>
-
-        <label for="fornecedor">Fornecedor:</label>
-        <select name="fornecedor">
-            <option value="bokus">bokus 1</option> // definir apos criar fornecedores
-            <option>fornecedor 2</option>
-            <option>fornecedor 3</option>
-        </select>
-
-        <br/><br/>
-
-        <input type="submit" value="Criar" />
-
+        <button type="submit" class="btn btn-primary">Criar</button>
     </form>
+{%endblock%}
 
-
-</body>
-</html>

@@ -5,6 +5,7 @@ from config import db
 from .routes.produto import bp_produto
 from .routes.categoria import bp_categoria
 from .routes.fornecedores import bp_fornecedores
+from .routes.home import bp_home
 
 def create_app():
     app = Flask(__name__)
@@ -36,5 +37,6 @@ def create_app():
     app.register_blueprint(bp_produto, url_prefix="/produtos")
     app.register_blueprint(bp_categoria, url_prefix="/categorias")
     app.register_blueprint(bp_fornecedores, url_prefix="/fornecedores")
+    app.register_blueprint(bp_home)
 
     return app
