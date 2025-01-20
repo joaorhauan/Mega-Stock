@@ -3,7 +3,8 @@ from flask import Flask
 from flask_migrate import Migrate
 from config import db
 from .routes.produto import bp_produto
-
+from .routes.categoria import bp_categoria
+from .routes.fornecedores import bp_fornecedores
 
 def create_app():
     app = Flask(__name__)
@@ -33,5 +34,7 @@ def create_app():
         db.create_all()
 
     app.register_blueprint(bp_produto, url_prefix="/produtos")
+    app.register_blueprint(bp_categoria, url_prefix="/categorias")
+    app.register_blueprint(bp_fornecedores, url_prefix="/fornecedores")
 
     return app

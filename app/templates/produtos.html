@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Produtos</title>
+    </head>
+    <body>
+        <h1>Produtos</h1>
+        <ul>
+            {% for produto in produtos %}
+                <li>{{ produto.nome }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html> 

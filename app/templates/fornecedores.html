@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fornecedores</title>
+    </head>
+    <body>
+        <h1>Fornecedores</h1>
+        <ul>
+            {% for fornecedor in fornecedores %}
+                <li>{{ fornecedor.nome }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html> 

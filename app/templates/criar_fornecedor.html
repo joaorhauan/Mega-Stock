@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Criar Fornecedor</title>
+    </head>
+    <body>
+        <h1>Criar Fornecedor</h1>
+        <form action="{{url_for('fornecedores.create')}}" method="post">
+            <input type="text" name="nome" placeholder="Nome">
+            <input type="text" name="contato" placeholder="Contato">
+            <input type="text" name="endereco" placeholder="Endereço">
+            <button type="submit">Criar</button>
+        </form>
+    </body>
+</html>
